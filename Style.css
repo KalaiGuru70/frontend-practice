@@ -174,3 +174,39 @@ footer {
         grid-template-columns: 1fr;
     }
 }
+
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.card:hover {
+     box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+     transform: translateY(-4px);
+     transition: all 0.3s ease;
+}
+
+button {
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+#about {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border: 2px solid yellow;
+}
