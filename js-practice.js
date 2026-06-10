@@ -1,20 +1,12 @@
-//Using var,Old way,can change Reassign and Redecleration;
+//DataTypes
 
-var city="Coimbatore";
-console.log(city);
+const MyName = "Kalaiselvi" ;   //String
+const Age = 45;                 //Number
+const isStudent = true;         //Boolean
+let address;                    //Undefined
 
-//Using let but can change value or Reassign and cannot Redecleration;
 
-let age=35;
-console.log(age);
-
-age = 45;
-console.log(age);
-
-//Using Const but cannot change Redecleration or Reassign;
-
-const pi=3.14;
-console.log(pi);
-
-const MyName="kalai";
-console.log(MyName);
+console.log(typeof MyName);
+console.log(typeof Age);
+console.log(typeof isStudent);
+console.log(typeof address);
