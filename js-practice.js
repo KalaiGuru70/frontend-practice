@@ -16,5 +16,5 @@ console.log(age);
 const pi=3.14;
 console.log(pi);
 
-const name="kalai";
-console.log(name);
+const MyName="kalai";
+console.log(MyName);
