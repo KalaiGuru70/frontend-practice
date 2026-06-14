@@ -1,114 +1,101 @@
-//Loops
+//function
 
-//for loop
-
-//1 to 10 print
-
-for(let i=1;i<=10;i++){
-    console.log(i);
+//Understanding Example-Named function or Normal function
+function greet(name){
+    return "Hello" +" " +name;
 }
+console.log(greet("kalai"));
 
-
-// 1 to 10 reverse print
-for(let i=10;i>=1;i--){
-    console.log(i);
+// Real program — Bill calculate
+function calculateBill(price,quantity){
+    return price*quantity;
 }
+console.log(calculateBill(120,3));
 
+//Anonymous Function
 
-//while loop
-let i=1;
-
-while(i<=5){
-    console.log(i);
-    i++
+//Understanding Example-No declare the name - but should be store the function in one variable;
+let person = function(name){
+    return "Hello" +" "+name;
 }
+console.log(person("Muthu"));
 
-
-//do while loop
-i=1;
-do{
-    console.log(i);
-    i++;
+//Real program - calculate discount;
+let calDiscount=function(price,percent){
+    return (price*percent)/100;
 }
-while(i<=5);
+console.log(calDiscount(1500,10));
 
 
-//Even Numbers
-for(let i=1;i<=20;i++){
-    if(i%2==0){
-        console.log(i);
+//Function Expression
+
+//Understanding Example-store the function in variable
+let add = function(a,b){
+    return a+b;
+}
+console.log(add(7,8));
+
+// Real program — temperature convert
+const celsiusToFahrenheit = function(celsius) {
+    return (celsius * 9/5) + 32;
+}
+console.log(celsiusToFahrenheit(37)); 
+
+//Arrow function
+
+//Understanding Example-short syntax
+let multiply = (a,b) => a*b;
+console.log(multiply(6,8));
+
+//Real program 1 - Check Even or Odd
+let evenOrOdd = num => num % 2==0 ? "Even" : "Odd"
+console.log(evenOrOdd(8));
+console.log(evenOrOdd(9));
+
+//Real program 2 - find Biggest number
+let bigNum = (a,b) => a > b ? a : b; 
+console.log(bigNum(7,8));
+
+//Real program 3 - find Biggest number with 3 num
+let big = (a,b,c) => a > b && a > c ? "a is big :" + a :
+                     b > a && b > c ? " b is big :" + b :
+                     "c is big :" + c ;
+
+console.log(big(4,7,2));
+console.log(big(8,5,3));
+console.log(big(10,4,18));
+
+// Real program 4 — age check
+const isAdult = (age) => age >= 18 ? "Adult" : "Minor";
+console.log(isAdult(20)); // Adult
+console.log(isAdult(15)); // Minor
+
+//Nested function 
+
+//Understanding example & function inside function
+function outer(){
+    
+    function inner(){
+        console.log("Hello");
     }
+    inner();
 }
+outer();
 
+//Real Example order summary
 
-//odd Number
-for(let i=1;i<=20;i++){
-    if(i%2!==0){
-        console.log(i);
+function orderSummary(price, quantity){
+    function calculateTotal(){
+        return price * quantity;
     }
-}
-
-
-//Multiplication Table
-for(let i=1;i<=10;i++){
-    console.log("5 x" + " " +i + "=" + (5*i));
-}
-
-
-//Sum of Numbers
-let sum =0;
-for(let i=1;i<=100;i++){
-    sum = sum+i;
-}
-console.log(sum);
-
-
-//1 to 10 print it but when come the 5 loop stop it
-for(let i=1;i<=5;i++){
-    if(i==5){
-        break;
+    function applyDiscount(total){
+        return total > 500 ? total -50 :  total;
     }
-    console.log(i);
-}
-
-
-//1 to 10 print but skip the 5 
-for(let i=1;i<=10;i++){
-    if(i==5){
-        continue;
-    }
-    console.log(i);
-}
-
-
-//pattern
-for(let i=1;i<=5;i++){
-    let result = " ";
-
-    for(let j=1;j<=i;j++){
-        result = result + j;
-    }
-
-    console.log(result);
-}
-
-
-//* Pattern
-for(let i=1;i<=5;i++){
-    let result =" ";
-    for(let j=1;j<=i;j++){
-        result = result + "*";
-    }
-    console.log(result);
-}
-
-
-//* Reverse pattern
-for(let i=5;i>=1;i--){
-    let result=" ";
-    for(let j=1;j<=i;j++){
-        result=result+"*";
-    }
-    console.log(result);
+    const total = calculateTotal();
+    const finalPrice = applyDiscount(total);
+    return `Final Price: ${finalPrice}`;
 
 }
+console.log(orderSummary(1000,3));
+
+
