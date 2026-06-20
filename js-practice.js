@@ -1,101 +1,113 @@
-//function
+//Array Concept
 
-//Understanding Example-Named function or Normal function
-function greet(name){
-    return "Hello" +" " +name;
-}
-console.log(greet("kalai"));
+// 1.Student Management System
 
-// Real program — Bill calculate
-function calculateBill(price,quantity){
-    return price*quantity;
-}
-console.log(calculateBill(120,3));
+let marks = [66,78,90,88,95];
 
-//Anonymous Function
+//Add new Mark
 
-//Understanding Example-No declare the name - but should be store the function in one variable;
-let person = function(name){
-    return "Hello" +" "+name;
-}
-console.log(person("Muthu"));
+marks.push(76);
 
-//Real program - calculate discount;
-let calDiscount=function(price,percent){
-    return (price*percent)/100;
-}
-console.log(calDiscount(1500,10));
+console.log("All Marks :");
 
+marks.forEach(mark =>{
+    console.log(mark);
+})
 
-//Function Expression
+//Total Marks
 
-//Understanding Example-store the function in variable
-let add = function(a,b){
-    return a+b;
-}
-console.log(add(7,8));
+let total = marks.reduce((sum ,mark) => sum+mark , 0);
+console.log("Total Marks :",total);
 
-// Real program — temperature convert
-const celsiusToFahrenheit = function(celsius) {
-    return (celsius * 9/5) + 32;
-}
-console.log(celsiusToFahrenheit(37)); 
+//Average
 
-//Arrow function
+let average = total / marks.length;
+console.log("Average_Marks :",average);
 
-//Understanding Example-short syntax
-let multiply = (a,b) => a*b;
-console.log(multiply(6,8));
+//Passed Student
 
-//Real program 1 - Check Even or Odd
-let evenOrOdd = num => num % 2==0 ? "Even" : "Odd"
-console.log(evenOrOdd(8));
-console.log(evenOrOdd(9));
+let Passed = marks.filter(mark => mark >= 35)
+console.log("Passed_Mark :" ,Passed);
 
-//Real program 2 - find Biggest number
-let bigNum = (a,b) => a > b ? a : b; 
-console.log(bigNum(7,8));
+//Add Grace Mark
 
-//Real program 3 - find Biggest number with 3 num
-let big = (a,b,c) => a > b && a > c ? "a is big :" + a :
-                     b > a && b > c ? " b is big :" + b :
-                     "c is big :" + c ;
+let Grace_Mark = marks.map(mark => mark+5);
+console.log("Grace_Mark :" ,Grace_Mark);
 
-console.log(big(4,7,2));
-console.log(big(8,5,3));
-console.log(big(10,4,18));
+//Highest Mark 
 
-// Real program 4 — age check
-const isAdult = (age) => age >= 18 ? "Adult" : "Minor";
-console.log(isAdult(20)); // Adult
-console.log(isAdult(15)); // Minor
-
-//Nested function 
-
-//Understanding example & function inside function
-function outer(){
-    
-    function inner(){
-        console.log("Hello");
-    }
-    inner();
-}
-outer();
-
-//Real Example order summary
-
-function orderSummary(price, quantity){
-    function calculateTotal(){
-        return price * quantity;
-    }
-    function applyDiscount(total){
-        return total > 500 ? total -50 :  total;
-    }
-    const total = calculateTotal();
-    const finalPrice = applyDiscount(total);
-    return `Final Price: ${finalPrice}`;
-
-}
-console.log(orderSummary(1000,3));
+let highest = Math.max(...marks);
+console.log("highest_mark :",highest);
 
 
+
+
+//2.Shopping Cart System
+
+let cards = [1000,1500,600,550,3000];
+
+//Add new item
+
+cards.push(700);
+
+//View the item
+
+cards.forEach(item =>{
+    console.log(item);
+})
+
+//Bill Total
+
+let total_Bill = cards.reduce((sum ,item) => sum+item ,0);
+console.log("Total_Bill:",total_Bill);
+
+//Discount
+
+let Discount = cards.map(item => item - (item * 0.1));
+console.log("After_Discount:",Discount);
+
+//Expensive Product
+
+let costly = cards.filter(item => item > 1000 );
+console.log("Products Above 1000:",costly);
+
+
+
+
+//3.Employee Salary Management
+
+let salaries = [20000, 25000, 30000, 18000];
+
+// Add employee salary
+salaries.push(35000);
+
+// Total salary expense
+let totalSalary = salaries.reduce((sum, salary) => sum + salary,0);
+console.log("Total Salary:", totalSalary);
+
+// Salary increment
+let updatedSalary = salaries.map(salary => salary + 2000);
+console.log("Updated_Salary :",updatedSalary);
+
+// Salary above 25000
+let highSalary = salaries.filter(salary => salary > 25000);
+console.log("Salary above 25000:",highSalary);
+
+
+
+
+//4.highest Salary find()
+
+let Salaries = [18000,22000,35000,34000,32000,45000];
+
+let high_salary = Salaries.find(salary => salary > 30000);
+console.log(" highest salary the first person:" ,high_salary);
+
+
+//5.Rank list System
+
+let Rank = [88,78,98,67,45,79,99];
+
+let Ranked_list = [...Rank].sort((a,b)=> b-a);
+console.log("Ranked_list :",Ranked_list);
+console.log("Topper :" ,Ranked_list[0]);
