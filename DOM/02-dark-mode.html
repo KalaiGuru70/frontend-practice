@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset ="UTF-8">
+        <meta name = "viewport" content = "width=device-width ,initial-scale=1.0">
+        <title>Dark Model Toggle</title>
+
+        <style>
+body{
+    font-family: Arial, sans-serif;
+    text-align:center;
+    margin-top:100px;
+    transition:0.3s;
+    background:white;
+    color:black;
+}
+
+.dark{
+    background:#1e1e1e;
+    color:white;
+}
+
+button{
+    padding:10px 20px;
+    font-size:18px;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.dark button{
+    background:white;
+    color:black;
+}
+</style>
+
+</head>
+
+
+<body>
+  <h1 id="title">Light Mode</h1>
+ <button id="btn">Switch Mode</button>
+
+<script>
+        
+//Select Element
+let body = document.body;
+let title = document.getElementById("title");
+let btn = document.getElementById("btn");
+
+        
+//Button Click Event
+ btn.addEventListener("click" , function(){
+    body.classList.toggle("dark");
+if(body.classList.contains("dark")){
+    title.textContent = "Dark Mode"
+    btn.textContent =  "Light Mode"
+}
+else{
+     title.textContent =  "Light Mode"
+     btn.textContent =   "Dark Mode"
+}
+
+});
+</script>
+</body>
+</html>
