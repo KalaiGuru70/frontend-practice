@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DOM Practice</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background:#f5f5f5;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.container{
+    background:white;
+    padding:30px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.2);
+    text-align:center;
+    width:350px;
+}
+
+.highlight{
+    background:yellow;
+    padding:10px;
+    border-radius:5px;
+    font-weight:bold;
+    display:inline-block;
+}
+
+button{
+    padding:10px 20px;
+    margin:20px 0;
+    border:none;
+    border-radius:5px;
+    background:#333;
+    color:white;
+    cursor:pointer;
+    font-size:16px;
+}
+
+button:hover{
+    background:#555;
+}
+
+ul{
+    list-style:none;
+    padding:0;
+}
+
+li{
+    background:#eee;
+    padding:8px;
+    margin:5px 0;
+    border-radius:5px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div id="box">Hello</div>
+
+    <br><br>
+
+    <button id="btn">Click Me</button>
+
+    <ul id="list">
+        <li>Item 1</li>
+    </ul>
+
+</div>
+
+<script>
+
+//1. Select Element
+const box = document.getElementById("box");
+
+//2. innerHTML
+box.innerHTML = "<b>Updated with HTML</b>";
+
+//3. Add CSS Class
+box.classList.add("highlight");
+
+//4. Change Style
+box.style.color = "blue";
+
+//5. Create Element
+const newItem = document.createElement("li");
+
+//6. Add Text
+newItem.textContent = "New Item";
+
+//7. Append Element
+const list = document.getElementById("list");
+list.appendChild(newItem);
+
+//8. Set Attribute
+box.setAttribute("title","This is a Box");
+
+//9. Get Attribute
+console.log(box.getAttribute("title"));
+
+//10. Dataset
+box.dataset.userId = "12345";
+console.log(box.dataset.userId);
+
+//11. Button Click Event
+const btn = document.getElementById("btn");
+
+btn.addEventListener("click",function(){
+    alert("Button Clicked Successfully!");
+});
+
+</script>
+
+</body>
+</html>
