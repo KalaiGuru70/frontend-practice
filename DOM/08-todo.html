@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Professional Todo App</title>
+
+    <link rel="stylesheet" href="09-todo.css">
+
+<style>
+/* Page */
+
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:linear-gradient(135deg,#667eea,#764ba2,#6dd5fa);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+}
+
+/* Container */
+
+.container{
+    width:550px;
+    background:rgba(255,255,255,0.95);
+    padding:35px;
+    border-radius:20px;
+    box-shadow:0 20px 40px rgba(0,0,0,0.25);
+}
+
+/* Heading */
+
+h1{
+    text-align:center;
+    color:#2c3e50;
+    font-size:34px;
+    margin-bottom:30px;
+}
+
+/* Input Section */
+
+.inputBox{
+    display:flex;
+    gap:10px;
+}
+
+/* Input */
+
+input{
+    flex:1;
+    padding:14px;
+    border:2px solid #dcdde1;
+    border-radius:10px;
+    font-size:16px;
+    outline:none;
+    transition:0.3s;
+}
+
+input:focus{
+    border-color:#667eea;
+    box-shadow:0 0 10px rgba(102,126,234,0.4);
+}
+
+/* Add Button */
+
+#addBtn{
+    padding:14px 22px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+    background:linear-gradient(45deg,#667eea,#764ba2);
+    transition:0.3s;
+}
+
+#addBtn:hover{
+    transform:scale(1.05);
+    background:linear-gradient(45deg,#5a67d8,#6b46c1);
+}
+
+/* Status */
+
+.status{
+    display:flex;
+    gap:10px;
+    margin:25px 0;
+}
+
+/* Status Box */
+
+.status p{
+    flex:1;
+    text-align:center;
+    padding:15px;
+    border-radius:12px;
+    color:white;
+    font-weight:bold;
+    box-shadow:0 5px 12px rgba(0,0,0,0.15);
+}
+
+/* Total */
+
+.status p:nth-child(1){
+    background:linear-gradient(45deg,#667eea,#764ba2);
+}
+
+/* Completed */
+
+.status p:nth-child(2){
+    background:linear-gradient(45deg,#00b894,#55efc4);
+}
+
+/* Pending */
+
+.status p:nth-child(3){
+    background:linear-gradient(45deg,#fdcb6e,#e17055);
+}
+
+/* Counter */
+
+.status span{
+    display:block;
+    margin-top:5px;
+    font-size:22px;
+}
+
+/* Task List */
+
+ul{
+    list-style:none;
+    padding:0;
+    margin:0;
+}
+
+/* Task Card */
+
+li{
+    background:white;
+    margin-bottom:15px;
+    padding:18px;
+    border-radius:15px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 8px 20px rgba(0,0,0,0.12);
+    transition:0.3s;
+}
+
+/* Task Hover */
+
+li:hover{
+    transform:translateY(-5px);
+    box-shadow:0 15px 25px rgba(0,0,0,0.20);
+}
+
+/* Completed Task */
+
+.completed{
+    background:#d4edda;
+    border-left:6px solid #00b894;
+    text-decoration:line-through;
+    color:#555;
+}
+
+/* Button Group */
+
+.buttonGroup{
+    display:flex;
+    gap:8px;
+}
+
+/* Complete Button */
+
+.completeBtn{
+    background:#00b894;
+    color:white;
+    border:none;
+    padding:8px 14px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:14px;
+    transition:0.3s;
+}
+
+.completeBtn:hover{
+    background:#019875;
+    transform:scale(1.05);
+}
+
+/* Delete Button */
+
+.deleteBtn{
+    background:#e74c3c;
+    color:white;
+    border:none;
+    padding:8px 14px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:14px;
+    transition:0.3s;
+}
+
+.deleteBtn:hover{
+    background:#c0392b;
+    transform:scale(1.05);
+}
+</style>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- Heading -->
+
+        <h1>📝 Todo App</h1>
+
+        <!-- Input Section -->
+
+        <div class="inputBox">
+
+            <input
+                type="text"
+                id="taskInput"
+                placeholder="Enter Your Task">
+
+            <button id="addBtn">
+                Add Task
+            </button>
+
+        </div>
+
+        <!-- Task Counter -->
+
+        <div class="status">
+
+            <p>Total : <span id="totalTask">0</span></p>
+
+            <p>Completed : <span id="completedTask">0</span></p>
+
+            <p>Pending : <span id="pendingTask">0</span></p>
+
+        </div>
+
+        <!-- Task List -->
+
+        <ul id="taskList">
+
+        </ul>
+
+    </div>
+
+<script>
+         
+// Step 1 : Select Elements
+
+let taskInput = document.getElementById("taskInput");
+
+let addBtn = document.getElementById("addBtn");
+
+let taskList = document.getElementById("taskList");
+
+let totalTask = document.getElementById("totalTask");
+
+let completedTask = document.getElementById("completedTask");
+
+let pendingTask = document.getElementById("pendingTask");
+
+// Step 2 : Update Counter
+
+function updateCounter(){
+
+    let total = taskList.children.length;
+
+    let completed = document.querySelectorAll(".completed").length;
+
+    let pending = total - completed;
+
+    totalTask.textContent = total;
+
+    completedTask.textContent = completed;
+
+    pendingTask.textContent = pending;
+
+}
+
+// Step 3 : Add Task
+
+addBtn.addEventListener("click", function(){
+
+    let task = taskInput.value.trim();
+
+    // Step 4 : Validation
+    if(task === ""){
+
+        alert("Please Enter Task");
+
+        return;
+
+    }
+
+    // Step 5 : Create List Item
+
+    let li = document.createElement("li");
+
+    // Step 6 : Task Name
+    let taskText = document.createElement("span");
+
+    taskText.textContent = "📚 " + task;
+
+    // Step 7 : Button Group
+    let buttonGroup = document.createElement("div");
+
+    buttonGroup.classList.add("buttonGroup");
+
+    // Step 8 : Complete Button
+    let completeBtn = document.createElement("button");
+
+    completeBtn.textContent = "✔ Complete";
+
+    completeBtn.classList.add("completeBtn");
+
+    // Step 9 : Delete Button
+
+     let deleteBtn = document.createElement("button");
+
+    deleteBtn.textContent = "🗑 Delete";
+
+    deleteBtn.classList.add("deleteBtn");
+
+    // Step 10 : Complete Event
+
+    completeBtn.addEventListener("click", function(event){
+
+        event.stopPropagation();
+
+        li.classList.toggle("completed");
+
+        updateCounter();
+
+    });
+
+    // Step 11 : Delete Event
+
+    deleteBtn.addEventListener("click", function(event){
+
+        event.stopPropagation();
+
+        li.remove();
+
+        updateCounter();
+
+    });
+
+    // Step 12 : Add Buttons
+
+    buttonGroup.appendChild(completeBtn);
+
+    buttonGroup.appendChild(deleteBtn);
+
+    // Step 13 : Add Task Text & Buttons
+
+    li.appendChild(taskText);
+
+    li.appendChild(buttonGroup);
+
+    // Step 14 : Add Task
+
+    taskList.appendChild(li);
+
+    // Step 15 : Clear Input
+
+    taskInput.value = "";
+
+    // Step 16 : Update Counter
+
+    updateCounter();
+
+});
+
+// Step 17 : Enter Key
+
+taskInput.addEventListener("keypress", function(event){
+
+    if(event.key === "Enter"){
+
+        addBtn.click();
+
+    }
+
+});
+    </script>
+
+</body>
+
+</html>
