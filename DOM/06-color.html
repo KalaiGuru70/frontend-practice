@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Changer</title>
+
+    <style>
+        /* Page */
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: white;
+            transition: 0.5s;
+        }
+
+        /* Card */
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 0 15px gray;
+        }
+
+        h1 {
+            color: black;
+        }
+
+        h2 {
+            color: darkblue;
+        }
+
+        /* Buttons */
+
+        button {
+            width: 150px;
+            padding: 12px;
+            margin: 8px;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #red {
+            background: red;
+        }
+
+        #green {
+            background: green;
+        }
+
+        #blue {
+            background: blue;
+        }
+
+        #yellow {
+            background: orange;
+        }
+
+        #reset {
+            background: black;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- Heading -->
+
+        <h1>Color Changer</h1>
+
+        <!-- Current Color -->
+
+        <h2 id="colorName">White</h2>
+
+        <!-- Buttons -->
+
+        <button id="red">Red</button><br>
+
+        <button id="green">Green</button><br>
+
+        <button id="blue">Blue</button><br>
+
+        <button id="yellow">Yellow</button><br>
+
+        <button id="reset">Reset</button>
+
+    </div>
+
+    <script>
+
+        // Step 1 : Select Buttons
+
+        let redBtn = document.getElementById("red");
+        let greenBtn = document.getElementById("green");
+        let blueBtn = document.getElementById("blue");
+        let yellowBtn = document.getElementById("yellow");
+        let resetBtn = document.getElementById("reset");
+
+        // Step 2 : Select Heading
+
+        let colorName = document.getElementById("colorName");
+
+        // Step 3 : Red Button
+
+        redBtn.addEventListener("click", function () {
+
+            document.body.style.backgroundColor = "red";
+
+            colorName.textContent = "Red";
+
+        });
+
+        // Step 4 : Green Button
+
+        greenBtn.addEventListener("click", function () {
+
+            document.body.style.backgroundColor = "green";
+
+            colorName.textContent = "Green";
+
+        });
+
+        // Step 5 : Blue Button
+
+        blueBtn.addEventListener("click", function () {
+
+            document.body.style.backgroundColor = "blue";
+
+            colorName.textContent = "Blue";
+
+        });
+
+        // Step 6 : Yellow Button
+
+        yellowBtn.addEventListener("click", function () {
+
+            document.body.style.backgroundColor = "yellow";
+
+            colorName.textContent = "Yellow";
+
+        });
+
+        // Step 7 : Reset Button
+
+        resetBtn.addEventListener("click", function () {
+
+            document.body.style.backgroundColor = "white";
+
+            colorName.textContent = "White";
+
+        });
+
+    </script>
+
+</body>
+
+</html>
