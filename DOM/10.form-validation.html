@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+</head>
+
+<body>
+
+    <h2>Form Validation</h2>
+
+    <form id="myForm">
+
+        <label>Name</label><br>
+        <input type="text" id="name"><br><br>
+
+        <label>Email</label><br>
+        <input type="text" id="email"><br><br>
+
+        <label>Password</label><br>
+        <input type="password" id="password"><br><br>
+
+        <button type="submit">Submit</button>
+
+    </form>
+
+    <p id="message"></p>
+
+    <script>
+
+        
+        // Program 1: Form Validation
+       
+
+        // Form Validation Definition:
+        // Form validation checks whether the user
+        // has entered valid input before submitting.
+
+        // Program Definition:
+        // This program validates the Name,
+        // Email and Password fields.
+
+        // Get HTML Elements
+        const form = document.getElementById("myForm");
+        const message = document.getElementById("message");
+
+        // Form Submit Event
+        form.addEventListener("submit", function (event) {
+
+            // Prevent page refresh
+            event.preventDefault();
+
+            // Get Input Values
+            let name = document.getElementById("name").value.trim();
+            let email = document.getElementById("email").value.trim();
+            let password = document.getElementById("password").value.trim();
+
+            // Required Validation
+            if (name === "") {
+
+                message.textContent = "Name is required";
+                message.style.color = "red";
+                return;
+
+            }
+
+            if (email === "") {
+
+                message.textContent = "Email is required";
+                message.style.color = "red";
+                return;
+
+            }
+
+            if (password === "") {
+
+                message.textContent = "Password is required";
+                message.style.color = "red";
+                return;
+
+            }
+
+            // Email Validation
+            if (!email.includes("@") || !email.endsWith(".com")) {
+
+                message.textContent = "Enter a valid email";
+                message.style.color = "red";
+                return;
+
+            }
+
+            // Password Validation
+            if (password.length < 6) {
+
+                message.textContent = "Password must be at least 6 characters";
+                message.style.color = "red";
+                return;
+
+            }
+
+            // Success Message
+            message.textContent = "Form Submitted Successfully!";
+            message.style.color = "green";
+
+        });
+
+    </script>
+
+</body>
+
+</html>
