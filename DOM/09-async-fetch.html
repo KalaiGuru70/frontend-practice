@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <center>
+    <div id ="loading">Loading...</div>
+    <div id ="result"></div>
+    <div id ="error"></div>
+
+
+    <script>
+        const loading = document.getElementById("loading");
+        const result = document.getElementById("result");
+        const Error = document.getElementById("error");
+
+        async function getData(){
+                  loading.style.display = "block"
+
+                  try{
+                    const response = await fetch(("https://official-joke-api.appspot.com/random_joke"));
+                    const data = await response.json();
+                    loading.style.display ="None";
+                    result.textContent = data.setup + " - "  + data.punchline;
+                  }
+                  catch (err){
+                     loading.style.display = "None";
+                     error.textContent = "Error :" + err.message;
+                     error.style.color = "Red"
+                  }
+        }
+
+        getData();
+    </script>
+</center>
+</body>
+</html>
