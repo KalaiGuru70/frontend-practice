@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Delegation</title>
+</head>
+
+<body>
+
+    
+    <!-- Program 1 : Basic Event Delegation -->
+    
+
+    <h2>Program 1 : Basic Event Delegation</h2>
+
+    <ul id="list">
+        <li>Apple</li>
+        <li>Mango</li>
+        <li>Orange</li>
+    </ul>
+
+    <script>
+
+        // Event Delegation Definition:
+        // A single event listener is added to
+        // the parent element instead of
+        // adding listeners to every child.
+
+        // Get Parent Element
+        let list = document.getElementById("list");
+
+        // Add Event Listener
+        list.addEventListener("click", function (event) {
+
+            // Display clicked fruit
+            console.log("Clicked :", event.target.textContent);
+
+        });
+
+    </script>
+
+    <hr>
+
+    
+    <!-- Program 2 : Employee List Manager -->
+    
+    
+     <h2>Program 2 : Employee List Manager</h2>
+
+    <input type="text" id="name" placeholder="Enter Employee Name">
+
+    <button id="addBtn">Add Employee</button>
+
+    <ul id="employeeList"></ul>
+
+    <script>
+
+        // Event Delegation Definition:
+        // A single event listener is added to
+        // the parent element to handle all
+        // child elements.
+
+        // Get HTML Elements
+        
+        let input = document.getElementById("name");
+
+        let addBtn = document.getElementById("addBtn");
+
+        let employeeList = document.getElementById("employeeList");
+
+        
+        // Add Employee
+        
+
+        addBtn.addEventListener("click", function () {
+
+            // Get Employee Name
+            let employeeName = input.value.trim();
+
+            // Check Empty Input
+            if (employeeName === "") {
+
+                alert("Enter Employee Name");
+
+                return;
+
+            }
+
+            // Create New List Item
+            let li = document.createElement("li");
+
+            // Add Employee Name and Delete Button
+            li.innerHTML = employeeName + ' <button>Delete</button>';
+
+            // Add List Item to UL
+            employeeList.appendChild(li);
+
+            // Clear Input Box
+            input.value = "";
+
+        });
+
+        
+        // Event Delegation
+      
+
+        employeeList.addEventListener("click", function (event) {
+
+            // Check Delete Button Click
+            if (event.target.tagName === "BUTTON") {
+
+                // Remove Employee
+                event.target.parentElement.remove();
+
+            }
+
+        });
+
+    </script>
+
+</body>
+
+</html>
+
+
