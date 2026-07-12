@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOMContentLoaded Practice</title>
+</head>
+
+<body>
+
+    <!-- Program 1 : Basic DOMContentLoaded -->
+  
+    <h2>Program 1 : Basic DOMContentLoaded</h2>
+
+    <h3>Welcome to JavaScript</h3>
+
+    <script>
+
+        // Program 1 : Basic DOMContentLoaded
+       
+        // DOMContentLoaded Definition:
+        // This event runs after the HTML
+        // document is completely loaded
+        // and parsed.
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            console.log("HTML Loaded Successfully");
+
+        });
+
+    </script>
+
+    <hr>
+
+    
+    <!-- Program 2 : Change Text using DOMContentLoaded -->
+    
+    <h2>Program 2 : Change Text using DOMContentLoaded</h2>
+
+    <h3 id="message">Loading...</h3>
+
+    <script>
+
+        // Program 2 : Change Text using DOMContentLoaded
+        
+        // Wait until HTML is loaded
+        document.addEventListener("DOMContentLoaded", function () {
+
+            // Get HTML Element
+            let message = document.getElementById("message");
+
+            // Change Text
+            message.textContent = "Welcome Kalai!";
+
+            // Display Message
+            console.log("Text Updated");
+
+        });
+
+    </script>
+
+    <hr>
+
+   
+    <!-- Program 3 : Load Data from LocalStorage -->
+    
+    <h2>Program 3 : Load Data from LocalStorage</h2>
+
+    <h3 id="result">Name : Not Found</h3>
+
+    <script>
+
+        
+        // Program 3 : Load Data from LocalStorage
+        
+
+        // Save Data
+        localStorage.setItem("name", "Kalai");
+
+        // Load Data after HTML is loaded
+        document.addEventListener("DOMContentLoaded", function () {
+
+            // Get Data from LocalStorage
+            let data = localStorage.getItem("name");
+
+            // Get HTML Element
+            let result = document.getElementById("result");
+
+            // Display Data
+            result.textContent = "Name : " + data;
+
+            console.log("Data Loaded");
+
+        });
+
+    </script>
+
+</body>
+
+</html>
